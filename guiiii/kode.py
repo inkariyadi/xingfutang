@@ -43,18 +43,18 @@ def batch_extractor(images_path, pickled_db_path="features.pck"):
 
     result = {}
     for f in files:
-        print ('Extracting features from image %s') % f
+        print ('Extracting features from image ' )
         name = f.split('/')[-1].lower()
         result[name] = extract_features(f)
     
     # saving all our feature vectors in pickled file
-    with open(pickled_db_path, 'w') as fp:
+    with open(pickled_db_path, 'wb') as fp:
         pickle.dump(result, fp)
 
 class Matcher(object):
 
     def __init__(self, pickled_db_path="features.pck"):
-        with open(pickled_db_path) as fp:
+        with open(pickled_db_path,'rb') as fp:
             self.data = pickle.load(fp)
         self.names = []
         self.matrix = []
@@ -84,7 +84,7 @@ def show_img(path):
     plt.show()
     
 def run():
-    images_path = 'C:/xampp/htdocs/xingfutang/guiiii/Aaron Paul0_262.jpg'
+    images_path = "data/"
     files = [os.path.join(images_path, p) for p in sorted(os.listdir(images_path))]
     # getting 3 random images 
     sample = random.sample(files, 3)
