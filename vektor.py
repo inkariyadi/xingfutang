@@ -15,7 +15,7 @@ def dotproduct(x,y):
     return dot
 
 def norm(x):
-    sum = 0;
+    sum = 0
 
     for i in range(1,3):
         sum += math.pow(x[i],2)
