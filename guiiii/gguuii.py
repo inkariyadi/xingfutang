@@ -107,5 +107,5 @@ image = image.resize((300, 300), Image.ANTIALIAS) ## The (250, 250) is (height, 
 img = ImageTk.PhotoImage(image)
 canvas.create_image(20,5,anchor=NW, image=img) 
 
-button_next = Button(res,text="Next").grid(row=4,columnspan=10,sticky=E)
+button_next = Button(res,text="Next",bg="pink").grid(row=4,columnspan=10,sticky=E)
 res.mainloop()
