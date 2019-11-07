@@ -234,7 +234,7 @@ class PageTwo(Frame):
         canvas2.create_image(0, 0, anchor = NW, image = img1_rank2)
 
         
-        image_next2 =PhotoImage(image_next2_raw)
+        image_next2 =PhotoImage("rank1_next.png")
         image_next2_resize = image_next2.subsample(5,5)
         button_next2 = Button(self,text="Next",image=image_next2_resize,command=lambda: master.show_frame("PageThree")).grid(row=2,column=0)
 
