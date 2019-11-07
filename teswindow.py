@@ -442,39 +442,39 @@ if __name__ == "__main__":
     app = SampleApp()
     
     
-    #je : euclidean
-    #cs : cosin
-    vektor = []
-    fileimg = []
+    # #je : euclidean
+    # #cs : cosin
+    # vektor = []
+    # fileimg = []
 
-    folder = "dataset/"
+    # folder = "dataset/"
 
-    kode.saveVector() #save array of vector ke file vector.pck
-    kode.saveNamaFile() #save array of nama file ke file nama_file.pck
-    vektor = kode.loadVector() #mindahin ke array 
-    fileimg = kode.loadNamaFile() #mindahin ke array
+    # kode.saveVector() #save array of vector ke file vector.pck
+    # kode.saveNamaFile() #save array of nama file ke file nama_file.pck
+    # vektor = kode.loadVector() #mindahin ke array 
+    # fileimg = kode.loadNamaFile() #mindahin ke array
 
-    vInit = kode.extract_features(filename) #hasil vektor yg mau di compare
+    # vInit = kode.extract_features(filename) #hasil vektor yg mau di compare
     
-    hasilje = [] #nyimpen hasil jarak euclidean
-    hasilcs = [] #nyimpen hasil cosin
-    for i in range (len(vektor)):
-        hasilje[i] = vektor.euclidean(vInit[i],vektor[i],2048)
-        hasilcs[i] = vektor.cosine(vInit[i],vektor[i],2048)
+    # hasilje = [] #nyimpen hasil jarak euclidean
+    # hasilcs = [] #nyimpen hasil cosin
+    # for i in range (len(vektor)):
+    #     hasilje[i] = vektor.euclidean(vInit[i],vektor[i],2048)
+    #     hasilcs[i] = vektor.cosine(vInit[i],vektor[i],2048)
 
-    hasilje.sort() #sort menaik
-    hasilcs.sort(reverse=True) #sort menurun
-    sortfileje = [x for _,x in sorted(zip(hasilje,fileimg))]
-    sortfilecs = [x for _,x in sorted(zip(hasilcs,fileimg))]
+    # hasilje.sort() #sort menaik
+    # hasilcs.sort(reverse=True) #sort menurun
+    # sortfileje = [x for _,x in sorted(zip(hasilje,fileimg))]
+    # sortfilecs = [x for _,x in sorted(zip(hasilcs,fileimg))]
 
-    global hasil
-    hasil = []
-    if(metode=="je"):
-        for i in range (10):
-            hasil[i]=sortfileje[i]
-    else:
-        for i in range (10):
-            hasil[i]=sortfilecs[i]
+    # global hasil
+    # hasil = []
+    # if(metode=="je"):
+    #     for i in range (10):
+    #         hasil[i]=sortfileje[i]
+    # else:
+    #     for i in range (10):
+    #         hasil[i]=sortfilecs[i]
 
     app.mainloop()
     

@@ -28,7 +28,7 @@ def haslowest(cek):
             minn=i
     return minn
 
-def haslowest(cek):
+def hashighest(cek):
     maks=0
     for i in range (len(cek)):
         if(cek[i]>cek[maks]):
