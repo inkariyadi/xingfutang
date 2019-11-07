@@ -112,7 +112,7 @@ class StartPage(Frame):
         self.master = master
         master.geometry("350x450+200+100")
         master.resizable(0,0)
-        master.configure(background="white")
+        master.configure(background="red")
         master.title("Programnya Chacha, Gill, Inka")
 
 
@@ -126,7 +126,7 @@ class StartPage(Frame):
 
         image_choosefile = PhotoImage(file="startpage_choosefile.png")
         image_choosefile_resize = image_choosefile.subsample(5,5)
-        button_choosefile = Button(self, image=image_choosefile_resize,command =choosefile).grid(row=1,column=0,pady=2)
+        button_choosefile = Button(self,background="red" ,image=image_choosefile_resize,command =choosefile).grid(row=1,column=0,pady=2)
 
         image_cosine = PhotoImage(file="startpage_cosine.png")
         image_cosine_resize = image_cosine.subsample(5,5)
