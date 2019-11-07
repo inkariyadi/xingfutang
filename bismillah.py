@@ -105,7 +105,7 @@ class StartPage(Frame):
                 master.destroy()
             
         def exitdelay():
-            master.after(65000)
+            master.after(50000)
             master.destroy()
         
         Frame.__init__(self, parent)
@@ -113,7 +113,7 @@ class StartPage(Frame):
         master.geometry("350x450+200+100")
         master.resizable(0,0)
         master.configure(background="white")
-        master.title("Programnya Chacha, Gill, Inka neehhhh")
+        master.title("Programnya Chacha, Gill, Inka")
 
 
         canvas = Canvas(self, width = 350, height = 238)
@@ -176,6 +176,7 @@ class SecondWindow(Tk):
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
+        
 
         self.frames = {}
         for F in (PageOne,PageTwo,PageThree,PageFour,PageFive,PageSix,PageSeven,PageEight,PageNine,PageTen):
@@ -204,6 +205,7 @@ class PageOne(Frame):
         self.master = master
         master.geometry("350x450+200+100")
         master.resizable(0,0)
+        master.title("Programnya Chacha, Gill, Inka")
 
         canvas = Canvas(self, width = 350, height = 125)
         canvas.grid(row=0,column=0)
