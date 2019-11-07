@@ -1,35 +1,40 @@
 import math
 
-def jarak(x,y):
+def euclidean(x,y,z):
     sum = 0
-    for i in range(1,3):
-        sum += math.pow(x[i]-y[i],2)
-
+    for i in range(z):
+        sum += math.pow((x[i]-y[i]),2)
     return math.sqrt(sum)
 
-def dotproduct(x,y):
+def dotproduct(x,y,z):
     dot = 0
-    for i in range(1,3):
+    for i in range(z):
         dot += x[i] * y[i]
     
     return dot
 
-def norm(x):
-    sum = 0;
-
-    for i in range(1,3):
-        sum += math.pow(x[i],2)
-    
+def norm(x,z):
+    sum = 0
+    for i in range(z):
+        sum += math.pow(x[i],2)    
     return math.sqrt(sum)
 
-def cosine(x,y):
-    return dotproduct(x,y) / norm(x) / norm(y)
-    
-x = [0,10,5]
-y = [0,10,5]
+def cosine(x,y,z):
+    return dotproduct(x,y,z) / (norm(x,z)*norm(y,z))
 
-print(jarak(x,y))
-print(dotproduct(x,y))
-print(norm(x))
-print(norm(y))
-print(cosine(x,y))
+def haslowest(cek):
+    minn=0
+    for i in range (len(cek)):
+        minn = cek[i]
+        if(cek[i]<minn):
+            minn=i
+    return minn
+
+def haslowest(cek):
+    maks=0
+    for i in range (len(cek)):
+        maks = cek[i]
+        if(cek[i]>maks):
+            maks=i
+    return maks
+    
