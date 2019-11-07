@@ -1,5 +1,8 @@
 import kode
 import vektor 
+from scipy.misc.pilutil import imread
+import matplotlib.pyplot as plt
+
 #je : euclidean
 #cs : cosin
 vector = []
@@ -8,6 +11,7 @@ fileimg = []
 folder = "dataset/"
 print("masukkan file name")
 filename=str(input(""))
+
 print("masukkan metod")
 metode=str(input(""))
 vector = kode.loadVector() #mindahin ke array 
@@ -15,28 +19,45 @@ fileimg = kode.loadNamaFile() #mindahin ke array
 
 vInit = kode.extract_features(filename) #hasil vektor yg mau di compare
 
-hasilje = [] #nyimpen hasil jarak euclidean
-hasilcs = [] #nyimpen hasil cosin
-for i in range (len(vector)):
-    hasilje[i] = vektor.euclidean(vInit[i],vector[i],2048)
-    hasilcs[i] = vektor.cosine(vInit[i],vector[i],2048)
+hasilje = [0 for i in range(len(vector))] #nyimpen hasil jarak euclidean
+hasilcs = [0 for i in range(len(vector))] #nyimpen hasil cosin
 
-hasilje.sort() #sort menaik
-hasilcs.sort(reverse=True) #sort menurun
-sortfileje = [x for _,x in sorted(zip(hasilje,fileimg))]
-sortfilecs = [x for _,x in sorted(zip(hasilcs,fileimg))]
-
-hasil = []
+hasil = ["" for i in range(10)]
 if(metode=="je"):
+    for i in range (len(vector)):
+        hasilje[i] = vektor.euclidean(vInit,vector[i])
+    print("kelar")
+
     for i in range (10):
-        hasil[i]=sortfileje[i]
-        img = imread(hasil[i], mode="RGB")
+        maks = vektor.haslowest(hasilje)
+        hasilje[maks]=1000
+        hasil[i]=fileimg[maks]
+        img = imread(folder+hasil[i], mode="RGB")
         plt.imshow(img)
         plt.show()
 else:
+    for i in range (len(vector)):
+        hasilje[i] = vektor.cosine(vInit,vector[i])
+    print("kelar")
+
     for i in range (10):
-        hasil[i]=sortfilecs[i]
-        img = imread(hasil[i], mode="RGB")
+        maks = vektor.hashighest(hasilje)
+        hasilje[maks]=-1000
+        hasil[i]=fileimg[maks]
+        img = imread(folder+hasil[i], mode="RGB")
         plt.imshow(img)
         plt.show()
+
+    # for i in range (len(vector)):
+    #     hasilcs[i] = vektor.cosine(vInit,vector[i])
+    #     print(hasilcs[i])
+    # hasilcs.sort(reverse=True) #sort menurun
+    # sortfilecs = [x for _,x in sorted(zip(hasilcs,fileimg))]
+    # print("kelar")
+    # for i in range (10):
+    #     hasil[i]=sortfilecs[i]
+    #     print(hasil[i])
+        # img = imread(hasil[i], mode="RGB")
+        # plt.imshow(img)
+        # plt.show()
 
