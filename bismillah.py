@@ -15,27 +15,15 @@ class SampleApp(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
 
-        self.title_font = font.Font(family='Helvetica', size=18, weight="bold", slant="italic")
-        self.helv36 = font.Font(family = "Helvetica",size = 36,weight = "bold")
-        self.helv15 = font.Font(family = "Helvetica",size = 15)
-        # the container is where we'll stack a bunch of frames
-        # on top of each other, then the one we want visible
-        # will be raised above the others
-
         container = Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-    # for F in (StartPage):
         page_name = StartPage.__name__
         frame = StartPage(parent=container, master=self)
         self.frames[page_name] = frame
-
-            # put all of the pages in the same location;
-            # the one on the top of the stacking order
-            # will be the one that is visible.
         frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame("StartPage")
@@ -183,10 +171,6 @@ class SecondWindow(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
 
-        # the container is where we'll stack a bunch of frames
-        # on top of each other, then the one we want visible
-        # will be raised above the others
-
         container = Frame(self)
         container.pack(side="top", fill="both", expand=True)
         container.grid_rowconfigure(0, weight=1)
@@ -197,10 +181,6 @@ class SecondWindow(Tk):
             page_name = F.__name__
             frame = F(parent=container, master=self)
             self.frames[page_name] = frame
-
-            # put all of the pages in the same location;
-            # the one on the top of the stacking order
-            # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
 
         self.show_frame("PageOne")
@@ -218,9 +198,7 @@ class PageOne(Frame):
         global img1_rank1
         global image_next1_raw
         global image_next1_resize
-        global image_bth1_resize
 
-        
         Frame.__init__(self, parent)
         self.master = master
         master.geometry("350x450+200+100")
@@ -253,10 +231,6 @@ class PageOne(Frame):
         else:
             button_next1 = Button(self,text="Next",image = image_next1_resize,command=lambda: master.show_frame("PageTwo")).grid(row=2,column=0)
 
-        # image_bth1 = PhotoImage(file="rank1_backtohome.png")
-        # image_bth1_resize = image_bth1.subsample(5,5)
-        # button_bth1 = Button(self,image=image_bth1_resize,command=lambda: master.show_frame("PageOne")).grid(row=3,column=0)
-
 class PageTwo(Frame):
 
     def __init__(self, parent, master):
@@ -265,7 +239,7 @@ class PageTwo(Frame):
         global img1_rank2
         global image_next2_raw
         global image_next2_resize
-        global image_bth2_resize
+
         Frame.__init__(self, parent)
         self.master = master
 
@@ -294,10 +268,7 @@ class PageTwo(Frame):
             button_next2 = Button(self,text="Exit",image = image_next2_resize,command=quit).grid(row=2,column=0)
         else:
             button_next2 = Button(self,text="Next",image = image_next2_resize,command=lambda: master.show_frame("PageThree")).grid(row=2,column=0)
-        # image_bth2 = PhotoImage(file="rank1_backtohome.png")
-        # image_bth2_resize = image_bth2.subsample(5,5)
-        # button_bth2 = Button(self,image=image_bth2_resize,command=lambda: master.show_frame("PageOne")).grid(row=3,column=0)
- 
+
 class PageThree(Frame):
 
     def __init__(self, parent, master):
@@ -306,7 +277,7 @@ class PageThree(Frame):
         global img1_rank3
         global image_next3_raw
         global image_next3_resize
-        global image_bth3_resize
+  
         Frame.__init__(self, parent)
         self.master = master
 
@@ -334,9 +305,6 @@ class PageThree(Frame):
             button_next3 = Button(self,text="Exit",image = image_next3_resize,command=quit).grid(row=2,column=0)
         else:
             button_next3 = Button(self,text="Next",image = image_next3_resize,command=lambda: master.show_frame("PageFour")).grid(row=2,column=0)
-        # image_bth3 = PhotoImage(file="rank1_backtohome.png")
-        # image_bth3_resize = image_bth3.subsample(5,5)
-        # button_bth3 = Button(self,image=image_bth3_resize,command=lambda: master.show_frame("PageOne")).grid(row=3,column=0)
 
 class PageFour(Frame):
 
@@ -346,7 +314,7 @@ class PageFour(Frame):
         global img1_rank4
         global image_next4_raw
         global image_next4_resize
-        global image_bth4_resize
+
         Frame.__init__(self, parent)
         self.master = master
 
@@ -375,10 +343,6 @@ class PageFour(Frame):
         else:
             button_next4 = Button(self,text="Next",image = image_next4_resize,command=lambda: master.show_frame("PageFive")).grid(row=2,column=0)
 
-        # image_bth4 = PhotoImage(file="rank1_backtohome.png")
-        # image_bth4_resize = image_bth4.subsample(5,5)
-        # button_bth4 = Button(self,image=image_bth4_resize,command=lambda: master.show_frame("PageOne")).grid(row=3,column=0)
-
 class PageFive(Frame):
 
     def __init__(self, parent, master):
@@ -387,7 +351,7 @@ class PageFive(Frame):
         global img1_rank5
         global image_next5_raw
         global image_next5_resize
-        global image_bth5_resize
+
         Frame.__init__(self, parent)
         self.master = master
 
@@ -415,9 +379,6 @@ class PageFive(Frame):
             button_next5 = Button(self,text="Exit",image = image_next5_resize,command=quit).grid(row=2,column=0)
         else:
             button_next5 = Button(self,text="Next",image = image_next5_resize,command=lambda: master.show_frame("PageSix")).grid(row=2,column=0)
-        # image_bth5 = PhotoImage(file="rank1_backtohome.png")
-        # image_bth5_resize = image_bth5.subsample(5,5)
-        # button_bth5 = Button(self,image=image_bth5_resize,command=lambda: master.show_frame("PageOne")).grid(row=3,column=0)
 
 class PageSix(Frame):
 
@@ -427,7 +388,7 @@ class PageSix(Frame):
         global img1_rank6
         global image_next6_raw
         global image_next6_resize
-        global image_bth6_resize
+
         Frame.__init__(self, parent)
         self.master = master
 
@@ -455,10 +416,7 @@ class PageSix(Frame):
             button_next6 = Button(self,text="Exit",image = image_next6_resize,command=quit).grid(row=2,column=0)
         else:
             button_next6 = Button(self,text="Next",image = image_next6_resize,command=lambda: master.show_frame("PageSeven")).grid(row=2,column=0)
-        # image_bth6 = PhotoImage(file="rank1_backtohome.png")
-        # image_bth6_resize = image_bth6.subsample(5,5)
-        # button_bth6 = Button(self,image=image_bth6_resize,command=lambda: master.show_frame("PageOne")).grid(row=3,column=0)
- 
+
 class PageSeven(Frame):
 
     def __init__(self, parent, master):
@@ -467,7 +425,7 @@ class PageSeven(Frame):
         global img1_rank7
         global image_next7_raw
         global image_next7_resize
-        global image_bth7_resize
+ 
         Frame.__init__(self, parent)
         self.master = master
 
@@ -495,9 +453,6 @@ class PageSeven(Frame):
             button_next7 = Button(self,text="Exit",image = image_next7_resize,command=quit).grid(row=2,column=0)
         else:
             button_next7 = Button(self,text="Next",image = image_next7_resize,command=lambda: master.show_frame("PageEight")).grid(row=2,column=0)
-        # image_bth7 = PhotoImage(file="rank1_backtohome.png")
-        # image_bth7_resize = image_bth7.subsample(5,5)
-        # button_bth7 = Button(self,image=image_bth7_resize,command=lambda: master.show_frame("PageOne")).grid(row=3,column=0)
 
 class PageEight(Frame):
 
@@ -507,7 +462,7 @@ class PageEight(Frame):
         global img1_rank8
         global image_next8_raw
         global image_next8_resize
-        global image_bth8_resize
+ 
         Frame.__init__(self, parent)
         self.master = master
 
@@ -535,9 +490,6 @@ class PageEight(Frame):
             button_next8 = Button(self,text="Exit",image = image_next8_resize,command=quit).grid(row=2,column=0)
         else:
             button_next8 = Button(self,text="Next",image = image_next8_resize,command=lambda: master.show_frame("PageNine")).grid(row=2,column=0)
-        # image_bth8 = PhotoImage(file="rank1_backtohome.png")
-        # image_bth8_resize = image_bth8.subsample(5,5)
-        # button_bth8 = Button(self,image=image_bth8_resize,command=lambda: master.show_frame("PageOne")).grid(row=3,column=0)
 
 class PageNine(Frame):
 
@@ -547,7 +499,7 @@ class PageNine(Frame):
         global img1_rank9
         global image_next9_raw
         global image_next9_resize
-        global image_bth9_resize
+
         Frame.__init__(self, parent)
         self.master = master
 
@@ -575,10 +527,7 @@ class PageNine(Frame):
             button_next9 = Button(self,text="Exit",image = image_next9_resize,command=quit).grid(row=2,column=0)
         else:
             button_next9 = Button(self,text="Next",image = image_next9_resize,command=lambda: master.show_frame("PageTen")).grid(row=2,column=0)
-        # image_bth9 = PhotoImage(file="rank1_backtohome.png")
-        # image_bth9_resize = image_bth9.subsample(5,5)
-        # button_bth9 = Button(self,image=image_bth9_resize,command=lambda: master.show_frame("PageOne")).grid(row=3,column=0)
- 
+
 class PageTen(Frame):  
     
     
@@ -588,7 +537,7 @@ class PageTen(Frame):
         global img1_rank10
         global image_next10_raw
         global image_next10_resize
-        global image_bth10_resize
+
         Frame.__init__(self, parent)
         self.master = master
 
@@ -612,13 +561,6 @@ class PageTen(Frame):
         image_next10_resize = image_next10.subsample(5,5)
         button_next10 = Button(self,text="Next",image=image_next10_resize,command=quit).grid(row=2,column=0)
 
-
-        # image_bth10 = PhotoImage(file="rank1_backtohome.png")
-        # image_bth10_resize = image_bth10.subsample(5,5)
-        # button_bth10 = Button(self,image=image_bth10_resize,command=lambda: master.show_frame("PageOne")).grid(row=3,column=0)
-   
-
-       
 if __name__ == "__main__":
     global img_rank1_raw
     global img_rank2_raw
@@ -631,16 +573,6 @@ if __name__ == "__main__":
     global img_rank9_raw
     global img_rank10_raw
 
-    global image_next1_raw
-    global image_next2_raw
-    global image_next3_raw
-    global image_next4_raw
-    global image_next5_raw
-    global image_next6_raw
-    global image_next7_raw
-    global image_next8_raw
-    global image_next9_raw
-
     global exit1
     global exit2
     global exit3
@@ -652,12 +584,8 @@ if __name__ == "__main__":
     global exit9
     global exit10
 
-    
-
     app = SampleApp()
     app.mainloop()
-    print(filename)
-    print(jumlah)
 
     if (jumlah==1):
         exit1 = 1
@@ -794,9 +722,6 @@ if __name__ == "__main__":
             maks = vektor.haslowest(hasilje)
             hasilje[maks]=1000
             hasil[i]=fileimg[maks]
-            # img = imread(folder+hasil[i], mode="RGB")
-            # plt.imshow(img)
-            # plt.show()
     else:
         for i in range (len(vector)):
             hasilje[i] = vektor.cosine(vInit,vector[i])
@@ -805,13 +730,7 @@ if __name__ == "__main__":
             maks = vektor.hashighest(hasilje)
             hasilje[maks]=-1000
             hasil[i]=fileimg[maks]
-            # img = imread(folder+hasil[i], mode="RGB")
-            # plt.imshow(img)
-            # plt.show()
 
-    # if (jumlah==2):
-    #     image_next2_raw = "page_exit.png" 
-    
     img_rank1_raw = folder+hasil[0]
     img_rank2_raw = folder+hasil[1]
     img_rank3_raw = folder+hasil[2]
