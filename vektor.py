@@ -2,7 +2,7 @@ import math
 
 def euclidean(x,y):
     sum = 0
-    for i in range(len(y)):
+    for i in range(len(x)):
         sum += math.pow((x[i]-y[i]),2)
     return math.sqrt(sum)
 
@@ -10,7 +10,6 @@ def dotproduct(x,y):
     dot = 0
     for i in range(len(x)):
         dot += x[i] * y[i]
-    
     return dot
 
 def norm(x):
