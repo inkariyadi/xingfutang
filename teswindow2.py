@@ -5,6 +5,10 @@ from tkinter import font
 from tkinter import filedialog
 from time import sleep
 from PIL import ImageTk,Image  
+import kode
+import vektor 
+from scipy.misc.pilutil import imread
+import matplotlib.pyplot as plt
 
 class SampleApp(Tk):
 
@@ -524,22 +528,60 @@ if __name__ == "__main__":
     
     app = SampleApp()
     app.mainloop()
-    print(filename)
-    print(jumlah)
+  
+
+    #je : euclidean
+    #cs : cosin
+    vector = []
+    fileimg = []
+
+    folder = "dataset/"
+
+    vector = kode.loadVector() #mindahin ke array 
+    fileimg = kode.loadNamaFile() #mindahin ke array
+
+    vInit = kode.extract_features(filename) #hasil vektor yg mau di compare
+
+    hasilje = [0 for i in range(len(vector))] #nyimpen hasil jarak euclidean
+    hasilcs = [0 for i in range(len(vector))] #nyimpen hasil cosin
+
+    hasil = ["" for i in range(10)]
+    if(metode=="je"):
+        for i in range (len(vector)):
+            hasilje[i] = vektor.euclidean(vInit,vector[i])
+
+        for i in range (10):
+            maks = vektor.haslowest(hasilje)
+            hasilje[maks]=1000
+            hasil[i]=fileimg[maks]
+            # img = imread(folder+hasil[i], mode="RGB")
+            # plt.imshow(img)
+            # plt.show()
+    else:
+        for i in range (len(vector)):
+            hasilje[i] = vektor.cosine(vInit,vector[i])
+
+        for i in range (10):
+            maks = vektor.hashighest(hasilje)
+            hasilje[maks]=-1000
+            hasil[i]=fileimg[maks]
+            # img = imread(folder+hasil[i], mode="RGB")
+            # plt.imshow(img)
+            # plt.show()
 
     # if (jumlah==2):
     #     image_next2_raw = "page_exit.png" 
     
-    img_rank1_raw = filename
-    img_rank2_raw = filename
-    img_rank3_raw = filename
-    img_rank4_raw = filename
-    img_rank5_raw = filename
-    img_rank6_raw = filename
-    img_rank7_raw = filename
-    img_rank8_raw = filename
-    img_rank9_raw = filename
-    img_rank10_raw = filename
+    img_rank1_raw = folder+hasil[0]
+    img_rank2_raw = folder+hasil[1]
+    img_rank3_raw = folder+hasil[2]
+    img_rank4_raw = folder+hasil[3]
+    img_rank5_raw = folder+hasil[4]
+    img_rank6_raw = folder+hasil[5]
+    img_rank7_raw = folder+hasil[6]
+    img_rank8_raw = folder+hasil[7]
+    img_rank9_raw = folder+hasil[8]
+    img_rank10_raw = folder+hasil[9]
     app2 = SecondWindow()
     app2.mainloop()
 

@@ -26,7 +26,6 @@ hasil = ["" for i in range(10)]
 if(metode=="je"):
     for i in range (len(vector)):
         hasilje[i] = vektor.euclidean(vInit,vector[i])
-    print("kelar")
 
     for i in range (10):
         maks = vektor.haslowest(hasilje)
@@ -38,7 +37,6 @@ if(metode=="je"):
 else:
     for i in range (len(vector)):
         hasilje[i] = vektor.cosine(vInit,vector[i])
-    print("kelar")
 
     for i in range (10):
         maks = vektor.hashighest(hasilje)
@@ -48,16 +46,4 @@ else:
         plt.imshow(img)
         plt.show()
 
-    # for i in range (len(vector)):
-    #     hasilcs[i] = vektor.cosine(vInit,vector[i])
-    #     print(hasilcs[i])
-    # hasilcs.sort(reverse=True) #sort menurun
-    # sortfilecs = [x for _,x in sorted(zip(hasilcs,fileimg))]
-    # print("kelar")
-    # for i in range (10):
-    #     hasil[i]=sortfilecs[i]
-    #     print(hasil[i])
-        # img = imread(hasil[i], mode="RGB")
-        # plt.imshow(img)
-        # plt.show()
 
