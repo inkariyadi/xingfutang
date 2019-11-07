@@ -4,7 +4,9 @@ from tkinter import messagebox
 from tkinter import font
 from tkinter import filedialog
 from time import sleep
-from PIL import ImageTk,Image  
+from PIL import ImageTk,Image 
+import kode
+import vektor 
 
 class SampleApp(Tk):
 
@@ -53,22 +55,22 @@ class StartPage(Frame):
         global image_euclidean_resize
 
         def choosefile():
+            global filename
             filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
-            print (filename)
-        
+           
         def opt_je():
+            global metode
             button_method.configure(image=image_euclidean_resize)
             metode = "je"
-            print(metode)           
-            return;
-        
+                 
         def opt_cs():
+            global metode
             button_method.configure(image=image_cosine_resize)
             metode = "cs"
-            return;
+        
         def submit():
-            print("horebisa")
             master.show_frame("PageOne")
+
         def quit():
             master.destroy()
         
@@ -228,7 +230,7 @@ class PageFour(Frame):
 
         canvas2 = Canvas(self, width = 230, height = 230)
         canvas2.grid(row=1,column=0)
-        img_rank4 = Image.open("4.png")
+        img_rank4 = Image.open(".png")
         img_rank4 = img_rank4.resize((230, 230), Image.ANTIALIAS)  
         img1_rank4 = ImageTk.PhotoImage(img_rank4)
         canvas2.create_image(0, 0, anchor = NW, image = img1_rank4)
@@ -438,4 +440,44 @@ class PageTen(Frame):
        
 if __name__ == "__main__":
     app = SampleApp()
+    
+    
+    #je : euclidean
+    #cs : cosin
+    vektor = []
+    fileimg = []
+
+    folder = "dataset/"
+
+    kode.saveVector() #save array of vector ke file vector.pck
+    kode.saveNamaFile() #save array of nama file ke file nama_file.pck
+    vektor = kode.loadVector() #mindahin ke array 
+    fileimg = kode.loadNamaFile() #mindahin ke array
+
+    vInit = kode.extract_features(filename) #hasil vektor yg mau di compare
+    
+    hasilje = [] #nyimpen hasil jarak euclidean
+    hasilcs = [] #nyimpen hasil cosin
+    for i in range (len(vektor)):
+        hasilje[i] = vektor.euclidean(vInit[i],vektor[i],2048)
+        hasilcs[i] = vektor.cosine(vInit[i],vektor[i],2048)
+
+    hasilje.sort() #sort menaik
+    hasilcs.sort(reverse=True) #sort menurun
+    sortfileje = [x for _,x in sorted(zip(hasilje,fileimg))]
+    sortfilecs = [x for _,x in sorted(zip(hasilcs,fileimg))]
+
+    global hasil
+    hasil = []
+    if(metode=="je"):
+        for i in range (10):
+            hasil[i]=sortfileje[i]
+    else:
+        for i in range (10):
+            hasil[i]=sortfilecs[i]
+
     app.mainloop()
+    
+
+    
+    
