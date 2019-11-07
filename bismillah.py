@@ -104,14 +104,15 @@ class StartPage(Frame):
             if messagebox.askokcancel("Program", "Are you sure you want to exit the program?"):
                 master.destroy()
             
-        def quit():
+        def exitdelay():
+            master.after(65000)
             master.destroy()
         
         Frame.__init__(self, parent)
         self.master = master
         master.geometry("350x450+200+100")
         master.resizable(0,0)
-      
+        master.configure(background="white")
         master.title("Programnya Chacha, Gill, Inka neehhhh")
 
 
@@ -160,7 +161,7 @@ class StartPage(Frame):
 
         image_submit =PhotoImage(file="startpage_submit.png")
         image_submit_resize = image_submit.subsample(5,5)
-        button_submit = Button(self,image = image_submit_resize,command=quit).grid(row=4,column =0,pady=20)
+        button_submit = Button(self,image = image_submit_resize,command=exitdelay).grid(row=4,column =0,pady=20)
 
         image_exit= PhotoImage(file="startpage_buttonexit_copy.png")
         image_exit_resize = image_exit.subsample(5,5)
