@@ -24,7 +24,7 @@ def extract_features(image_path, vector_size=32):
         # Descriptor vector size is 64
         needed_size = (vector_size * 64)
         if dsc.size < needed_size:
-            # if we have less than 32 descriptors then just adding zeros at the
+            # if we have less than 32 descriptors then just adding zeros at the 
             # end of our feature vector
             dsc = np.concatenate([dsc, np.zeros(needed_size - dsc.size)])
     except cv2.error as e:
