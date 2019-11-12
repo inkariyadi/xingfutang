@@ -105,7 +105,6 @@ class StartPage(Frame):
                 master.destroy()
             
         def exitdelay():
-            master.after(50000)
             master.destroy()
         
         Frame.__init__(self, parent)
@@ -126,7 +125,7 @@ class StartPage(Frame):
 
         image_choosefile = PhotoImage(file="startpage_choosefile.png")
         image_choosefile_resize = image_choosefile.subsample(5,5)
-        button_choosefile = Button(self,background="red" ,image=image_choosefile_resize,command =choosefile).grid(row=1,column=0,pady=2)
+        button_choosefile = Button(self,image=image_choosefile_resize,command =choosefile).grid(row=1,column=0,pady=2)
 
         image_cosine = PhotoImage(file="startpage_cosine.png")
         image_cosine_resize = image_cosine.subsample(5,5)
@@ -706,7 +705,7 @@ if __name__ == "__main__":
     vector = []
     fileimg = []
 
-    folder = "dataset/"
+    folder = "Algeo-18001/test/dataset/"
 
     vector = kode.loadVector() #mindahin ke array 
     fileimg = kode.loadNamaFile() #mindahin ke array
