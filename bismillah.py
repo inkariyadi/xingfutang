@@ -705,7 +705,7 @@ if __name__ == "__main__":
     vector = []
     fileimg = []
 
-    folder = "Algeo-18001/test/dataset/"
+    folder = "dataset/"
 
     vector = kode.loadVector() #mindahin ke array 
     fileimg = kode.loadNamaFile() #mindahin ke array
